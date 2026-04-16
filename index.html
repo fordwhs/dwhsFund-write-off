@@ -153,23 +153,23 @@
 /* ===== A4 列印精確格式 ===== */
 @media print {
   @page {
-    margin: 0;
+    margin: 8mm;
     size: A4;
   }
+  html, body { height: auto !important; overflow: visible !important; }
   .ui-panel, .preview-hint, .type-tabs-wrapper { display: none !important; }
   .ui-panel h2 { display: none !important; }
   body { background: white; margin: 0; padding: 0; }
-  .a4-wrapper { box-shadow: none; margin: 0; padding: 0; }
+  .a4-wrapper { box-shadow: none; margin: 0; padding: 0; height: auto !important; }
   .a4-page {
     display: block !important;
-    width: 210mm;
-    min-height: 296mm;
-    padding: 8mm 8mm 5mm 8mm;
+    width: 100%;
+    padding: 0;
     box-sizing: border-box;
     font-family: "標楷體", "DFKai-SB", serif;
     color: black;
     background: white;
-    position: relative;
+    page-break-after: avoid;
   }
   table { border-collapse: collapse; width: 100%; }
   td, th {
