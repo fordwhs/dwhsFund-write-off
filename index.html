@@ -972,7 +972,7 @@ function buildExpBudgetTable(info, amt, reason, code) {
       <td class="center" style="font-size:9pt; height:35px;" rowspan="2">${info.p}</td>
       <td class="center" style="font-size:9pt;" rowspan="2">${info.f}</td>
       <td class="center" style="font-size:9pt;">${info.t || ''}</td>
-      <td rowspan="2" style="border:1px solid black;"></td>
+      <td rowspan="2" style="border:1px solid black; vertical-align:middle; text-align:center; font-size:14pt; font-weight:bold;">${amt ? '$' + amt.toLocaleString() : ''}</td>
       <td rowspan="2" class="yellow-bg" style="border:1px solid black; vertical-align:top; padding:4px; font-size:10.5pt;">
         <div style="white-space:pre-wrap; line-height:1.8;">${reason}</div>
       </td>
