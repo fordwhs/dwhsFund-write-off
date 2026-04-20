@@ -118,22 +118,38 @@
   }
   .type-tabs {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     gap: 8px;
     margin-bottom: 16px;
   }
   .type-tabs button {
-    padding: 12px 8px;
-    border: 2px solid #ccc; border-radius: 7px;
+    padding: 14px 6px 10px;
+    border: 1.5px solid #ddd; border-radius: 10px;
     background: white; cursor: pointer;
     font-family: "Microsoft JhengHei", sans-serif;
-    font-size: 14px; font-weight: bold;
+    font-size: 12px; font-weight: 500;
     color: #555; transition: all 0.2s;
     text-align: center; line-height: 1.4;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 8px;
   }
-  .type-tabs button.active {
-    border-color: #1a5f2a; background: #1a5f2a; color: white;
+  .type-tabs button .tab-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
   }
+  .type-tabs button .tab-label { font-size: 12px; font-weight: 500; color: #444; }
+  .type-tabs button .tab-sub { font-size: 11px; color: #888; }
+  .type-tabs button:hover { border-color: #bbb; background: #f9f9f9; }
+  .type-tabs button.active.blue { border-color: #185FA5; background: #f0f6fd; }
+  .type-tabs button.active.blue .tab-icon { background: #B5D4F4; }
+  .type-tabs button.active.blue .tab-label { color: #185FA5; }
+  .type-tabs button.active.green { border-color: #0F6E56; background: #f0faf7; }
+  .type-tabs button.active.green .tab-icon { background: #9FE1CB; }
+  .type-tabs button.active.green .tab-label { color: #0F6E56; }
+  .type-tabs button.active.amber { border-color: #854F0B; background: #fdf6ed; }
+  .type-tabs button.active.amber .tab-icon { background: #FAC775; }
+  .type-tabs button.active.amber .tab-label { color: #854F0B; }
   /* item rows for 請購單 */
   .item-rows { margin-bottom: 10px; }
   .item-row {
@@ -260,11 +276,41 @@
 
   <div class="type-tabs-wrapper">
     <div class="type-tabs">
-      <button class="active" onclick="setType('PUR_LOW')">📄 請購單（3000元以下）</button>
-      <button onclick="setType('PUR_HIGH')">📄 請購單（3000元以上）</button>
-      <button onclick="setType('EXP_LOW')">📋 動支請示單（3000元以下）</button>
-      <button onclick="setType('EXP_HIGH')">📋 動支請示單（3000元以上）</button>
-      <button onclick="setType('TRIP')">🏕️ 自強活動請示單</button>
+      <button class="active blue" onclick="setType('PUR_LOW')">
+        <div class="tab-icon" style="background:#E6F1FB;">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="#185FA5" stroke-width="1.5"/><line x1="6" y1="7" x2="14" y2="7" stroke="#185FA5" stroke-width="1.2"/><line x1="6" y1="10" x2="14" y2="10" stroke="#185FA5" stroke-width="1.2"/><line x1="6" y1="13" x2="11" y2="13" stroke="#185FA5" stroke-width="1.2"/></svg>
+        </div>
+        <div class="tab-label">請購單</div>
+        <div class="tab-sub">3000以下</div>
+      </button>
+      <button class="blue" onclick="setType('PUR_HIGH')">
+        <div class="tab-icon" style="background:#E6F1FB;">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="#185FA5" stroke-width="1.5"/><line x1="6" y1="7" x2="14" y2="7" stroke="#185FA5" stroke-width="1.2"/><line x1="6" y1="10" x2="14" y2="10" stroke="#185FA5" stroke-width="1.2"/><line x1="6" y1="13" x2="11" y2="13" stroke="#185FA5" stroke-width="1.2"/><circle cx="14" cy="5.5" r="3.5" fill="#185FA5"/><text x="14" y="7.2" text-anchor="middle" font-size="5.5" fill="white" font-weight="500">$</text></svg>
+        </div>
+        <div class="tab-label">請購單</div>
+        <div class="tab-sub">3000以上</div>
+      </button>
+      <button class="green" onclick="setType('EXP_LOW')">
+        <div class="tab-icon" style="background:#E1F5EE;">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="#0F6E56" stroke-width="1.5"/><line x1="6" y1="7" x2="14" y2="7" stroke="#0F6E56" stroke-width="1.2"/><line x1="6" y1="10" x2="10" y2="10" stroke="#0F6E56" stroke-width="1.2"/><polyline points="8,13 10.5,15.5 15,11" stroke="#0F6E56" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <div class="tab-label">動支請示單</div>
+        <div class="tab-sub">3000以下</div>
+      </button>
+      <button class="green" onclick="setType('EXP_HIGH')">
+        <div class="tab-icon" style="background:#E1F5EE;">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="#0F6E56" stroke-width="1.5"/><line x1="6" y1="7" x2="14" y2="7" stroke="#0F6E56" stroke-width="1.2"/><line x1="6" y1="10" x2="10" y2="10" stroke="#0F6E56" stroke-width="1.2"/><polyline points="8,13 10.5,15.5 15,11" stroke="#0F6E56" stroke-width="1.5" fill="none"/><circle cx="14" cy="5.5" r="3.5" fill="#0F6E56"/><text x="14" y="7.2" text-anchor="middle" font-size="5.5" fill="white" font-weight="500">$</text></svg>
+        </div>
+        <div class="tab-label">動支請示單</div>
+        <div class="tab-sub">3000以上</div>
+      </button>
+      <button class="amber" onclick="setType('TRIP')">
+        <div class="tab-icon" style="background:#FAEEDA;">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none"><polygon points="10,3 17,16 3,16" stroke="#854F0B" stroke-width="1.5" stroke-linejoin="round" fill="none"/><polygon points="6,16 10,9 14,16" stroke="#854F0B" stroke-width="1" stroke-linejoin="round" fill="none"/><circle cx="14.5" cy="6" r="2" stroke="#854F0B" stroke-width="1.2" fill="none"/></svg>
+        </div>
+        <div class="tab-label">自強活動</div>
+        <div class="tab-sub">請示單</div>
+      </button>
     </div>
   </div>
 
@@ -406,7 +452,7 @@ function addItem() {
 function buildItemRows() {
   const container = document.getElementById('itemRows');
   container.innerHTML = '';
-  const s = 'width:100%;padding:5px 4px;font-size:19px;border:1px solid #ccc;border-radius:3px;font-family:"Microsoft JhengHei",sans-serif;box-sizing:border-box;';
+  const s = 'width:100%;padding:3px 4px;font-size:14px;border:1px solid #ccc;border-radius:3px;font-family:"Microsoft JhengHei",sans-serif;box-sizing:border-box;';
   items.forEach((item, idx) => {
     const q = parseFloat(item.qty) || 0;
     const p = parseFloat(item.price) || 0;
@@ -420,7 +466,7 @@ function buildItemRows() {
       <td style="padding:2px 2px;"><input type="text" placeholder="式" value="${item.unit}" style="${s}text-align:center;" oninput="items[${idx}].unit=this.value;render()"></td>
       <td style="padding:2px 2px;"><input type="number" placeholder="0" value="${item.qty}" style="${s}text-align:center;" oninput="items[${idx}].qty=this.value;updateRow(${idx});render()"></td>
       <td style="padding:2px 2px;"><input type="number" placeholder="0" value="${item.price}" style="${s}text-align:right;" oninput="items[${idx}].price=this.value;updateRow(${idx});render()"></td>
-      <td id="sub_${idx}" style="padding:2px 4px;text-align:right;font-size:19px;font-weight:bold;color:${sub>0?'#1a5f2a':'#aaa'};vertical-align:middle;">${sub > 0 ? sub.toLocaleString() : '—'}</td>
+      <td id="sub_${idx}" style="padding:2px 4px;text-align:right;font-size:14px;font-weight:bold;color:${sub>0?'#1a5f2a':'#aaa'};vertical-align:middle;">${sub > 0 ? sub.toLocaleString() : '—'}</td>
       <td style="padding:2px 3px;"><input type="text" placeholder="備註" value="${item.note||''}" style="${s}" oninput="items[${idx}].note=this.value;render()"></td>
     `;
     container.appendChild(tr);
@@ -468,8 +514,13 @@ function scalePreview() {
 
 function setType(t) {
   currentType = t;
+  const colorMap = ['blue','blue','green','green','amber'];
   document.querySelectorAll('.type-tabs button').forEach((b,i) => {
-    b.classList.toggle('active', ['PUR_LOW','PUR_HIGH','EXP_LOW','EXP_HIGH','TRIP'][i] === t);
+    const isActive = ['PUR_LOW','PUR_HIGH','EXP_LOW','EXP_HIGH','TRIP'][i] === t;
+    b.classList.remove('active');
+    if (isActive) b.classList.add('active');
+    b.querySelector('.tab-icon').style.background = isActive ? '' :
+      (colorMap[i]==='blue'?'#E6F1FB': colorMap[i]==='green'?'#E1F5EE':'#FAEEDA');
   });
   const isPur = t.startsWith('PUR');
   const isExp = t.startsWith('EXP');
